@@ -1,0 +1,104 @@
+﻿@model HotelSystem.ViewModels.RegistrationViewModel
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Registration</h2>
+
+@if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+{
+    if (ViewBag.Message != null)
+    {
+        <div class="alert alert-success">
+            <strong>Success!</strong>@ViewBag.Message
+        </div>
+    }
+}
+
+else
+{
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="header">
+            <h1>Hotel Register Form</h1>
+        </div>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="w3-main">
+            <!-- Main -->
+            <div class="about-bottom main-agile book-form">
+             
+                <h2 class="tittle">Register Here</h2>
+                <form action="#" method="post">
+                    <div class="form-date-w3-agileits">
+                        <label> First Name </label>
+                        <input type="text" name="FirstName" placeholder="Your First Name" required="">
+                        <label> Last Name </label>
+                        <input type="text" name="lastName" placeholder="Your Last Name" required="">
+                        <label> Email </label>
+                        @Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
+                        <input type="email" name="Email" placeholder="Your Email" required="">
+                        <label> Date of Birth </label>
+                        <input type="date" name="DateOfBirth" placeholder="Your Birthday" required="">
+                        <label> Contact Number </label>
+                        <input type="text" name="ContactNum" placeholder="Your Number" required="">
+                        <label> Address </label>
+                        <input type="text" name="Address" placeholder="Your Address" required="">
+                        <label> Password </label>
+                        <input type="password" name="Password" placeholder="Your Password" required="">
+                    </div>
+                    <div class="make wow shake">
+                        <input type="submit" style=" background-color:#f4511e;
+                               border: none;
+                               color: white;
+                               padding: 16px 32px;
+                               text-align: center;
+                               font-size: 16px;
+                               margin: 4px 2px;
+                               transition: 0.3s;
+                               display: inline-block;
+                               text-decoration: none;
+                               cursor: pointer; value="Register">
+                    </div>
+
+                    <div class="make wow shake">
+                        <input class="btn btn-success btn-verify" type="submit"  style="background-color: #9932CC; border: none; color: white; padding: 10px 37px; text-align: center; font-size: 16px; margin: 4px 2px; transition: 0.3s; display: inline-block; text-decoration: none; cursor: pointer; " value="Login" onclick="location.href='@Url.Action("Login", "Customer")'" />
+                    </div>
+                </form>
+            </div>
+            <!-- //Main -->
+        </div>
+
+        <!-- js-scripts-->
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <script type="text/javascript" src="~/Scripts/jquery-2.1.4.min.js"></script>
+        <script>
+            $(document).ready(function (c) {
+                $('.alert-close').on('click', function (c) {
+                    $('.main-agile').fadeOut('slow', function (c) {
+                        $('.main-agile').remove();
+                    });
+                });
+            });
+        </script>
+        <!-- //js-scripts-->
+
+        if (ViewBag.Message != null)
+        {
+            <div class="alert alert-danger">
+                <strong>Error!</strong>@ViewBag.Message
+            </div>
+        }
+    }
+}
+
+
+
+@section Scripts {
+    <link href="~/styles/RegistrationStyle.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jqueryval")
+}

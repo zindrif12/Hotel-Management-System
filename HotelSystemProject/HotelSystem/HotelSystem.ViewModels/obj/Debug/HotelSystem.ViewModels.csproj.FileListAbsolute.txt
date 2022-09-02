@@ -1,0 +1,6 @@
+C:\Users\MSii\source\repos\HotelSystemProject\HotelSystem\HotelSystem.ViewModels\bin\Debug\HotelSystem.ViewModels.dll
+C:\Users\MSii\source\repos\HotelSystemProject\HotelSystem\HotelSystem.ViewModels\bin\Debug\HotelSystem.ViewModels.pdb
+C:\Users\MSii\source\repos\HotelSystemProject\HotelSystem\HotelSystem.ViewModels\obj\Debug\HotelSystem.ViewModels.csproj.AssemblyReference.cache
+C:\Users\MSii\source\repos\HotelSystemProject\HotelSystem\HotelSystem.ViewModels\obj\Debug\HotelSystem.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\MSii\source\repos\HotelSystemProject\HotelSystem\HotelSystem.ViewModels\obj\Debug\HotelSystem.ViewModels.dll
+C:\Users\MSii\source\repos\HotelSystemProject\HotelSystem\HotelSystem.ViewModels\obj\Debug\HotelSystem.ViewModels.pdb

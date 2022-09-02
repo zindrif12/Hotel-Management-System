@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9626219a0bed44618288476dbcd2cc9a" Name="Diagram1">
+        <EntityTypeShape EntityType="db_a784d6_hotelsystemModel.Customer" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a784d6_hotelsystemModel.CustomersRegistration" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a784d6_hotelsystemModel.Employee" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a784d6_hotelsystemModel.Login" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a784d6_hotelsystemModel.MultipleRoom" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a784d6_hotelsystemModel.Reciept" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a784d6_hotelsystemModel.Reservation" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a784d6_hotelsystemModel.Room" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a784d6_hotelsystemModel.sysdiagram" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="db_a784d6_hotelsystemModel.FK_Login_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a784d6_hotelsystemModel.FK_Reciept_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a784d6_hotelsystemModel.FK_Reservation_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a784d6_hotelsystemModel.FK_Login_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a784d6_hotelsystemModel.FK_Reciept_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a784d6_hotelsystemModel.FK_MultipleRoom_Reservation" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a784d6_hotelsystemModel.FK_MultipleRoom_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a784d6_hotelsystemModel.FK_Reciept_Reservation" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,47 @@
+﻿@using System.Data;
+
+
+@{
+    ViewBag.Title = "UserList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="~/styles/UserList.css">
+</head>
+<body>
+    <table style="border:1px">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Date Of Birth</th>
+                <th>Contact Number</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+                @foreach (DataRow row in Model.Rows)
+                {
+                <tr>
+                    <td>@row["FirstName"]</td>
+                    <td>@row["lastName"]</td>
+                    <td>@row["Email"]</td>
+                    <td>@row["DateOfBirth"]</td>
+                    <td>@row["ContactNum"]</td>
+                    <td>@row["Address"]</td>
+                </tr>
+            }
+            </tbody>
+            </table>
+    </body>
+</html>

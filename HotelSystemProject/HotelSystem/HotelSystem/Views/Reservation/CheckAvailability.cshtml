@@ -1,0 +1,96 @@
+﻿@model IEnumerable<HotelSystem.ViewModels.ReservationViewModel>
+
+@{
+    ViewBag.Title = "CheckAvailability";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<h2>CheckAvailability</h2>
+
+@using (Html.BeginForm("CheckAvailability", "Reservation", FormMethod.Get))
+{
+    <hr />
+    <form>
+        <div class="form-row">
+            <div class="col-md-6">
+                <label><i class="fa fa-calendar form-label" aria-hidden="true"  ></i> Arrival Date :</label>
+                <input class="form-control" type="text" id="startDate" size="30" name="start"/>
+            </div>
+            <div class="col-md-6">
+                <label><i class="fa fa-calendar form-label" aria-hidden="true"></i> Departure Date :</label>
+                <input class="form-control" type="text" id="endDate" size="30" name="end"/>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6">
+                <button type="button" id="btnCheck" class="check-btn btn btn-primary">Check availability</button>
+                
+            </div>
+        </div>
+    </form>
+}
+<hr />
+<table id="tblRooms" class="table table-bordered" style="">
+    <thead>
+        <tr>
+            <th scope="col">Room No</th>
+            <th scope="col">Room Type</th>
+            <th scope="col"></th>
+
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<link href="~/styles/reservation.css" rel="stylesheet" />
+
+<script>
+
+    $(function () {
+        $("#startDate").datepicker({ dateFormat: "yy-mm-dd" }).val()
+        $("#endDate").datepicker({ dateFormat: "yy-mm-dd" }).val()
+    });
+
+    //Load Data in Table when documents is ready
+    $(document).ready(function () {
+
+        $("#btnCheck").click(function () {
+
+            var startDate = $('#startDate').val();
+            var endDate = $('#endDate').val();
+
+            $.ajax({
+                url: '/Reservation/GetCheckAvailability',
+                type: 'POST',
+
+                dataType: 'json',
+                data: {
+                    startDate: startDate,
+                    endDate: endDate
+                },
+                success: function (result) {
+                    $('#tblRooms tbody').empty();
+
+                    //itetrate thorugh each record and bind it to td
+                    var html = '';
+                    $.each(result, function (key, item) {
+                        var tablerow = '<tr>'
+                            + '<td>' + item.RoomNo + '</td>'
+                            + '<td>' + item.RoomType + '</td>'
+                            + '<td>' + '<a href="/Reservation/SaveDetails?roomNo=' + item.RoomNo + '&start='
+                            + startDate + '&end=' + endDate + '&roomType=' + item.RoomType + '" class="Button">Reserve Room</a>'
+                            + '</td>'
+                            + '</tr>';
+                        $("#tblRooms tbody").append(tablerow);
+                    });
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        });
+    });
+
+</script>

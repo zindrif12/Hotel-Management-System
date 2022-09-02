@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "AddRoom";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+<h2>Add a New Room</h2>
+
+@using (Ajax.BeginForm("AddRoom", "Reservation", new AjaxOptions { HttpMethod = "Post" }))
+{
+    <hr />
+    <form>
+        <div class="form-row">
+            <div class="col-md-6">
+                <label>Room Number</label>
+                <input class="form-control" type="text" id="roomNo" name="RoomNo" size="30" />
+            </div>
+            <div class="col-md-6">
+                <label>Room Type</label>
+                <select name="RoomType" class="form-control" id="roomType">
+                    <option>Room</option>
+                    <option>Standard Double Room</option>
+                    <option>Standard Family Room</option>
+                    <option>Garden Family Room</option>
+                    <option>Deluxe Double Room</option>
+                    <option>Executive Junior Suite</option>
+                    <option>Maisonette</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6">
+                <label>Room Capacity</label>
+                <input class="form-control" type="number" id="Capacity" size="30" name="Capacity" />
+            </div>
+            <div class="col-md-6">
+                <label>Price Per Night </label>
+                <input class="form-control" type="number" id="pricePerNight" size="30" name="PricePerNight" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6">
+                <label>Description</label>
+                <input class="form-control" type="text" id="description" size="30" name="Description" />
+            </div>
+            <div class="col-md-6">
+                <input type="submit" value="Add Room" class="btn btn-success" id="sub-btn" />
+            </div>
+        </div>
+    </form>
+}
+
+<hr />
+<table id="tblRooms" class="table table-bordered" style="">
+    <thead>
+        <tr>
+            <th scope="col">Room No</th>
+            <th scope="col">Room Type</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+@*<table>
+        <tr>
+            <th>Room No</th>
+            <th>Room Type</th>
+        </tr>
+       @foreach( var result in Model)
+                {
+                    <tr>
+                        <td>@result.RoomNo</td>
+                        <td>@result.RoomType</td>
+                    </tr>
+                }
+    </table>*@
+
+
+<script>
+
+    $("#sub-btn").click(function () {
+        $.ajax({
+            url: '/Reservation/GetAllRooms',
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+                $('#tblRooms tbody').empty();
+
+                //itetrate thorugh each record and bind it to td
+                var html = '';
+                $.each(result, function (key, item) {
+                    var tablerow = '<tr>'
+                        + '<td>' + item.RoomNo + '</td>'
+                        + '<td>' + item.RoomType + '</td>'
+                        + '</tr>';
+                    $("#tblRooms tbody").append(tablerow);
+                });
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    });
+</script>
+
+<link href="~/styles/AddRoom.css" rel="stylesheet" />

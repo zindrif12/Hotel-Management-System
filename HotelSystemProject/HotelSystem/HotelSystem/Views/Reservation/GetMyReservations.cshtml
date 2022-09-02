@@ -1,0 +1,66 @@
+﻿@model IEnumerable<HotelSystem.Data.DataModels.Reservation>
+
+@{
+    ViewBag.Title = "GetMyReservations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>GetMyReservations</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.customerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reservationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateOut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.roomType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numberOfPeople)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.customerId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.reservationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateIn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateOut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.roomType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numberOfPeople)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,68 @@
+﻿
+@model HotelSystem.ViewModels.CheckAvailabilityViewModel
+@{
+    ViewBag.Title = "SaveDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <h4>Reserve Your Room!</h4>
+    <hr />
+    <form>
+        <div class="row">
+            <div class="col-md-6">
+                <label><i class="fa fa-calendar form-label" aria-hidden="true"></i> Arrival Date :</label>
+                <input class="form-control" type="text" id="startDate" name="dateIn" size="30"/>
+            </div>
+            <div class="col-md-6">
+                <label><i class="fa fa-calendar form-label" aria-hidden="true"></i> Departure Date :</label>
+                <input class="form-control" type="text" id="endDate" name="dateOut" size="30"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label><i class="fa fa-home" aria-hidden="true"></i> Choose a Room :</label>
+                <input class="form-control" type="text" id="roomType" size="30"  />
+            </div>
+            <div class="col-md-6">
+                <label><i class="fa fa-home" aria-hidden="true"></i> Number of Guests :</label>
+                <input type="number" name="numberOfPeople" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label><i class="fa fa-calendar form-label" aria-hidden="true"></i> RoomNo</label>
+                <input class="form-control" type="text" id="roomNo" name="RoomId" size="30" />
+            </div>
+            <div class="col-md-6">
+                <input class="btn btn-success btn-verify" type="submit" value="Verify Login and Checkout" onclick="location.href='@Url.Action("VerifyLogin","Customer")'" />
+                @*<a href="/Customer/VerifyLogin"  class="btn btn-success">Verify Login and Checkout</a>*@
+            @*<button class="btn" type="button" onclick="location.href='@Url.Action("VerifyLogin","Customer")'">Verify Login and Checkout</button>*@
+            </div>
+        </div>
+    </form>
+  
+}
+
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link href="~/styles/reservation.css" rel="stylesheet" />
+
+    @*<link rel="stylesheet" href="css/jquery-ui.css" />*@
+<script>
+       $(document).ready(function () {
+           $("#startDate").val("@Model.ArrivalDate");
+           $("#endDate").val("@Model.DepartureDate");
+           $("#roomType").val("@Model.RoomType");
+           $("#roomNo").val("@Model.RoomNo");
+       });
+
+       $(function () {
+           $("#startDate").datepicker({ dateFormat: "yy-mm-dd" }).val()
+           $("#endDate").datepicker({ dateFormat: "yy-mm-dd" }).val()
+       });
+</script>
+}
